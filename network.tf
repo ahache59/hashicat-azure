@@ -6,15 +6,14 @@ module "network" {
   subnet_names        = ["subnet1", "subnet2", "subnet3"]
 
   subnet_service_endpoints = {
-    "subnet1" : ["Microsoft.Sql"], 
+    "subnet1" : ["Microsoft.Sql"],
     "subnet2" : ["Microsoft.Sql"],
     "subnet3" : ["Microsoft.Sql"]
   }
-
+  use_for_each = true
   tags = {
     environment = "dev"
     costcenter  = "it"
   }
 
-  depends_on = [azurerm_resource_group.example]
 }
